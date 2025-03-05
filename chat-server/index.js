@@ -38,6 +38,7 @@ let chatRooms = [
 
 console.log('TWERB SERVER STARTED'); 
 
+//a comment added to test push
 io.on('connection', (socket) => {
     console.log(`connect: ${socket.id}`, socket.request.headers)
 
