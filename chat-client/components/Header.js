@@ -1,12 +1,19 @@
 import { StyleSheet, View, Image, Text } from 'react-native'; 
 import { useRouter } from 'expo-router'; 
 import { FontAwesome6 } from '@expo/vector-icons'; 
-
+import { FortuneContext } from '../providers/FortuneContext';
+import { useEffect, useContext } from 'react';
 
 const Header = () => {
     const logo = require('../assets/pikachus.png');
     const router = useRouter(); 
-    let userDisplay = <FontAwesome6 name="user-circle" size={30} color='#FFFFFF'/>
+    const { toggleLogin, getUser, isLoggedIn } = useContext(FortuneContext);
+    
+    useEffect(() => {
+        getUser(); 
+    },[isLoggedIn]); 
+
+    let userDisplay = isLoggedIn ? <FontAwesome6 name="user-circle" size={30} color='#00bda5'/> : <FontAwesome6 name="user-circle" size={30} color='#FFFFFF'/>
 
     return(
         <View style={styles.header}>
@@ -17,13 +24,24 @@ const Header = () => {
             <Text style={styles.menu}>
                 BRANDS
             </Text>
-            <Text style={styles.menu}>
+            <Text 
+                style={styles.menu}
+                onPress={() => {
+                    router.push('/Chat');
+                }}>
                 TWERB CHAT
             </Text>
-            <Text style={styles.menu}>
+            <Text 
+                style={styles.menu}
+                onPress={() => {
+                    router.push('/Register');
+                }}
+                >
                 REGISTER
             </Text>
-            <Text style={styles.menu}>
+            <Text 
+                style={styles.menu}
+                onPress={toggleLogin} >
                 {userDisplay}
             </Text>
         </View>

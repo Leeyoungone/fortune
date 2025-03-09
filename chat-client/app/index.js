@@ -1,7 +1,17 @@
 import { View, Image, StyleSheet } from 'react-native'; 
+import { FortuneContext } from '../providers/FortuneContext';
+import { useEffect, useContext } from 'react';
 
 const Home = () => {
     const banner = require('../assets/pikachuBanner.jpg'); 
+    const {isConnected, chatDisconnect} = useContext(FortuneContext); 
+
+    useEffect(() => {
+        if(isConnected) {
+            chatDisconnect();
+        }
+    })
+
     return(
         <View>
             <Image
