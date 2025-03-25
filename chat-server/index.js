@@ -1,5 +1,7 @@
 import { Server } from "socket.io";
 
+//origin: ['https://localhost:8081']
+
 const io = new Server({
     cors : {
         origin: ['https://localhost:8081']
@@ -52,8 +54,8 @@ io.on('connection', (socket) => {
     });
 
     socket.on('connectRoom', (id) => {
-        let choseRoom = chatRooms.filter((room) => room.roomId == id); 
-        socket.join(choseRoom[0].roomName); 
+        let chosenRoom = chatRooms.filter((room) => room.roomId == id); 
+        socket.join(chosenRoom[0].roomName); 
         console.log('joined room: ', chosenRoom[0].roomName); 
         socket.emit('joinedRoom', chosenRoom[0].messages);
     }); 
@@ -62,7 +64,7 @@ io.on('connection', (socket) => {
         const {userMessage, room_id, sender, messageTime} = data; 
         let selectedRoom = chatRooms.filter((room) => room.roomId == room_id); 
         const addMessage = {
-            id: generatedMessageId(), 
+            id: generateMessagesId(), 
             content: userMessage, 
             sent: messageTime, 
             user: sender,

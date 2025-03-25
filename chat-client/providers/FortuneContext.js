@@ -108,7 +108,7 @@ export const FortuneProvider = (props) => {
         sendMessage(joinMessage, room, user);
     }
 
-    const handleChatMessage = (value) => {
+    const handleChatMessages = (value) => {
         getChatMessages(value); 
     }; 
 
@@ -152,7 +152,7 @@ export const FortuneProvider = (props) => {
                 setUserMessage, 
                 sendMessage, 
                 socket, 
-                handleChatMessage 
+                handleChatMessages 
             }}
         >
             {props.children}

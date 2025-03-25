@@ -5,7 +5,7 @@ import { FortuneContext } from '../providers/FortuneContext';
 import { useEffect, useContext } from 'react';
 
 const Header = () => {
-    const logo = require('../assets/pikachus.png');
+    const logo = require('../assets/pikachus.webp');
     const router = useRouter(); 
     const { toggleLogin, getUser, isLoggedIn } = useContext(FortuneContext);
     
