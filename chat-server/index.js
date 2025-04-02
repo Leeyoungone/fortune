@@ -1,12 +1,10 @@
 import { Server } from "socket.io";
-
-//origin: ['https://localhost:8081']
-
+//      origin: ['http://localhost:5000']
 const io = new Server({
-    cors : {
-        origin: ['https://localhost:8081']
+    cors: {
+        origin: "*",
     }
-}); 
+});
 
 const generateMessagesId = () => Math.random().toString(36).substring(2,10); 
 
