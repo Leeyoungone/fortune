@@ -13,7 +13,6 @@ const Layout = () => {
                 <Footer/>
             </SafeAreaView>
         </FortuneProvider>
-        
     );
 }; 
 

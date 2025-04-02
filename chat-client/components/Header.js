@@ -5,7 +5,7 @@ import { FortuneContext } from '../providers/FortuneContext';
 import { useEffect, useContext } from 'react';
 
 const Header = () => {
-    const logo = require('../assets/pikachus.webp');
+    const logo = require('../assets/waddleDee.webp');
     const router = useRouter(); 
     const { toggleLogin, getUser, isLoggedIn } = useContext(FortuneContext);
     
@@ -24,6 +24,7 @@ const Header = () => {
             <Text style={styles.menu}>
                 BRANDS
             </Text>
+            
             <Text 
                 style={styles.menu}
                 onPress={() => {
@@ -31,6 +32,15 @@ const Header = () => {
                 }}>
                 TWERB CHAT
             </Text>
+            
+            <Text 
+                style={styles.menu}
+                onPress={() => {
+                    router.push('/Fortunes');
+                }}>
+                FORTUNES
+            </Text>
+
             <Text 
                 style={styles.menu}
                 onPress={() => {
@@ -63,7 +73,7 @@ const styles = StyleSheet.create({
     logoStyle: {
         height: '60%', 
         width: '20%', 
-        resizeMode: 'stretch'
+        resizeMode: 'center'
     }, 
     menu: {
         color: '#00bda5',

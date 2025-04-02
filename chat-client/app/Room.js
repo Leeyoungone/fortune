@@ -67,7 +67,7 @@ const Room = () => {
                     data={chatMessages}
                     renderItem={({ item }) => <MessageComponent {...item} sender={sender}/>} 
                     keyExtractor={item => item.id}
-                    inverted={true}
+                    inverted={false}
                     onContentSizeChange={() => flatListRef.current.scrollToEnd({ animated: true })} 
                 />
             </View>
