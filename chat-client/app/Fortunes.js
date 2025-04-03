@@ -1,9 +1,8 @@
-//Send Fortune 
-//See Received Fortune
-//two buttons that redirect or open a separate "room"
 import { StyleSheet, Text, View, TouchableOpacity, Platform } from 'react-native'; 
 import { useRouter } from 'expo-router';
 import { Dimensions } from 'react-native';
+import { Stack, Button, TextField, Box } from '@mui/material'
+
 
 const boundedHeight = Dimensions.get('window').height;
 
@@ -11,23 +10,43 @@ const Fortunes = () => {
     const router = useRouter();
 
     const receivedFortune = () => {
-        router.push('/Received');
+        router.push('/ReceiveFortune');
     }; 
 
     const sendFortune = () => {
-        router.push('/Send');
+        router.push('/SendFortune');
     }
 
     return (
-        <View> 
-            <Text> Some Text Here </Text>
-            <TouchableOpacity onPress={receivedFortune}> 
-                <Text style={styles.formButtonLabel}> RECEIVED</Text>
-            </TouchableOpacity>
+        <View style={styles.containerStyle}> 
+            <Box sx={{m: 2}}>
+            <Stack
+                direction="column"
+                spacing={ 2 }
+                sx={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}>
+                <Button 
+                    variant="contained"
+                    sx={{ width: '25%' }}
+                    onClick ={()=> {
+                        receivedFortune();
+                    }}
+                    >
+                    Received Fortune
+                </Button>
 
-            <TouchableOpacity onPress={sendFortune}> 
-                <Text style={styles.formButtonLabel}> SEND</Text>
-            </TouchableOpacity>
+                <Button 
+                    variant="contained"
+                    sx={{ width: '25%' }}
+                    onClick ={()=> {
+                        sendFortune();
+                    }}>
+                    Make Fortune
+                </Button>
+            </Stack>
+            </Box>
         </View>
     )
 }
@@ -48,8 +67,6 @@ const styles = StyleSheet.create({
             default: {
                 fontSize: 24,
                 paddingTop: 20,
-                display: 'inline-block', 
-                backgroundColor: '#DDDDDD', 
             }
         })
     }
